@@ -1,10 +1,14 @@
+package com.example.numberdemo.outputters
+
+import spock.lang.Specification
+
 class RomanOutputSpec extends Specification {
     def "test the output for roman numbers"() {
 
         def outputter = new RomanOutputter()
 
         expect:
-        outputter.convert(a) == b
+        outputter.apply(a) == b
 
         where:
         a | b
