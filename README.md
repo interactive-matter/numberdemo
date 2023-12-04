@@ -1,2 +1,2 @@
 # Number Demo
-A small example how to convert numbers, nothing special
+A small kata how to convert numbers, nothing special
