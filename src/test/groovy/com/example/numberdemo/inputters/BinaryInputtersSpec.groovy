@@ -20,6 +20,20 @@ class BinaryInputSpec extends Specification {
         "1000" | 8
         "10100" | 20
         "101010" | 42
-        "9" | 1
+    }
+
+    def "test the input for invalid number"() {
+
+        when:
+        inputter.apply("9")
+
+        then:
+        thrown(NumberFormatException)
+
+        when:
+        inputter.apply("Quatsch")
+
+        then:
+        thrown(NumberFormatException)
     }
 }
