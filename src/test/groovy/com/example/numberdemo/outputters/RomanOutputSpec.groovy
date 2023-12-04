@@ -18,6 +18,8 @@ class RomanOutputSpec extends Specification {
         9 | "IX"
         10 | "X"
         42 | "XLII"
+        444 | "CDXLIV"
+        999 | "CMXCIX"
         1234 | "MCCXXXIV"
         2023 | "MMXXIII"
     }

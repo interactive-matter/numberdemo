@@ -1,0 +1,7 @@
+conversion:
+    inputters:
+        decimal: com.example.numberdemo.inputters.DecimalInputter
+        binary: com.example.numberdemo.inputters.BinaryInputter
+    outputters:
+        roman: com.example.numberdemo.outputters.RomanOutputter
+

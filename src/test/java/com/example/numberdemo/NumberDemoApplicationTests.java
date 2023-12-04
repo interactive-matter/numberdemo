@@ -6,7 +6,6 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
-import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 @AutoConfigureMockMvc
@@ -30,7 +29,7 @@ class NumberDemoApplicationTests {
 					MockMvcRequestBuilders.get("/convert/binary-to-roman/101")
 			).andReturn();
 			assert result.getResponse().getStatus() == 200;
-			assert result.getResponse().getContentAsString() == "9";
+			assert result.getResponse().getContentAsString().equals("V");
 
 		} catch (Exception e) {
 			throw new RuntimeException(e);
@@ -41,10 +40,10 @@ class NumberDemoApplicationTests {
 	void testDecimalToRoman() {
 		try {
 			MvcResult result = mockMvc.perform(
-					MockMvcRequestBuilders.get("/convert/decimal-to-roman/101")
+					MockMvcRequestBuilders.get("/convert/decimal-to-roman/42")
 			).andReturn();
 			assert result.getResponse().getStatus() == 200;
-			assert result.getResponse().getContentAsString() == "9";
+			assert result.getResponse().getContentAsString().equals("XLII");
 
 		} catch (Exception e) {
 			throw new RuntimeException(e);
