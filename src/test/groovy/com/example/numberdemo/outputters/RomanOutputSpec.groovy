@@ -11,15 +11,15 @@ class RomanOutputSpec extends Specification {
         outputter.apply(a) == b
 
         where:
-        a | b
-        1 | "I"
-        3 | "III"
-        4 | "IV"
-        9 | "IX"
-        10 | "X"
-        42 | "XLII"
-        444 | "CDXLIV"
-        999 | "CMXCIX"
+        a    | b
+        1    | "I"
+        3    | "III"
+        4    | "IV"
+        9    | "IX"
+        10   | "X"
+        42   | "XLII"
+        444  | "CDXLIV"
+        999  | "CMXCIX"
         1234 | "MCCXXXIV"
         2023 | "MMXXIII"
     }

@@ -22,20 +22,20 @@ public class ConversionController {
     @GetMapping("/{in}-to-{out}/{value}")
     public ResponseEntity<String> connvert(@PathVariable String in, @PathVariable String out, @PathVariable String value) {
         try {
-            //TODO with this patter we can even use some caching header settings
+            //TODO with this pattern we can even use some caching header settings
             return new ResponseEntity<>(
-                    converter.convert(in,out, value),
+                    converter.convert(in, out, value),
                     HttpStatus.OK
             );
         } catch (IllegalArgumentException e) {
             String message = String.format("Unable to convert %s reading as %s to %s: %s", value, in, out, e.getMessage());
             log.info(message);
-            log.debug("original exception ",e);
+            log.debug("original exception ", e);
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         } catch (Exception e) {
             String message = String.format("Error converting %s reading as %s to %s", value, in, out);
             log.info(message);
-            log.debug("original exception ",e);
+            log.debug("original exception ", e);
             return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
 
         }

@@ -13,12 +13,12 @@ class BinaryInputSpec extends Specification {
         inputter.apply(a) == b
 
         where:
-        a | b
-        "0" | 0
-        "1" | 1
-        "11"| 3
-        "1000" | 8
-        "10100" | 20
+        a        | b
+        "0"      | 0
+        "1"      | 1
+        "11"     | 3
+        "1000"   | 8
+        "10100"  | 20
         "101010" | 42
     }
 

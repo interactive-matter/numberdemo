@@ -12,41 +12,41 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 @SpringBootTest
 class NumberDemoApplicationTests {
 
-	@Autowired
-	ConversionController controller;
+    @Autowired
+    ConversionController controller;
 
-	@Autowired
-	MockMvc mockMvc;
+    @Autowired
+    MockMvc mockMvc;
 
-	@Test
-	void contextLoads() {
-	}
+    @Test
+    void contextLoads() {
+    }
 
-	@Test
-	void testBinaryToRoman() {
-		try {
-			MvcResult result = mockMvc.perform(
-					MockMvcRequestBuilders.get("/convert/binary-to-roman/101")
-			).andReturn();
-			assert result.getResponse().getStatus() == 200;
-			assert result.getResponse().getContentAsString().equals("V");
+    @Test
+    void testBinaryToRoman() {
+        try {
+            MvcResult result = mockMvc.perform(
+                    MockMvcRequestBuilders.get("/convert/binary-to-roman/101")
+            ).andReturn();
+            assert result.getResponse().getStatus() == 200;
+            assert result.getResponse().getContentAsString().equals("V");
 
-		} catch (Exception e) {
-			throw new RuntimeException(e);
-		}
-	}
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 
-	@Test
-	void testDecimalToRoman() {
-		try {
-			MvcResult result = mockMvc.perform(
-					MockMvcRequestBuilders.get("/convert/decimal-to-roman/42")
-			).andReturn();
-			assert result.getResponse().getStatus() == 200;
-			assert result.getResponse().getContentAsString().equals("XLII");
+    @Test
+    void testDecimalToRoman() {
+        try {
+            MvcResult result = mockMvc.perform(
+                    MockMvcRequestBuilders.get("/convert/decimal-to-roman/42")
+            ).andReturn();
+            assert result.getResponse().getStatus() == 200;
+            assert result.getResponse().getContentAsString().equals("XLII");
 
-		} catch (Exception e) {
-			throw new RuntimeException(e);
-		}
-	}
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

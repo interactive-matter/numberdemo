@@ -3,16 +3,16 @@ package com.example.numberdemo
 import com.example.numberdemo.inputters.Inputter
 import spock.lang.Specification
 
-class ConverterSpec extends Specification{
+class ConverterSpec extends Specification {
     def "test if registering inputs and outputs works"() {
         def converter = new Converter()
 
         when:
-        converter.registerInputter "x", { number -> -1}
-        converter.registerOutputter "y", {number -> Integer.toString(number)}
+        converter.registerInputter "x", { number -> -1 }
+        converter.registerOutputter "y", { number -> Integer.toString(number) }
 
         then:
-        converter.convert ("x","y","test") == "-1"
+        converter.convert("x", "y", "test") == "-1"
 
     }
 
@@ -20,16 +20,16 @@ class ConverterSpec extends Specification{
         def converter = new Converter()
 
         when:
-        converter.registerInputter "x", { number -> -1}
-        converter.registerOutputter "y", {number -> Integer.toString(number)}
-        converter.registerInputter "x", { number -> -9}
+        converter.registerInputter "x", { number -> -1 }
+        converter.registerOutputter "y", { number -> Integer.toString(number) }
+        converter.registerInputter "x", { number -> -9 }
 
 
         then:
         thrown IllegalArgumentException
 
         and:
-        converter.convert ("x","y","test") == "-1"
+        converter.convert("x", "y", "test") == "-1"
 
 
     }
@@ -39,15 +39,15 @@ class ConverterSpec extends Specification{
         def converter = new Converter()
 
         when:
-        converter.registerInputter "x", { number -> -1}
-        converter.registerOutputter "y", {number -> Integer.toString(number)}
-        converter.registerOutputter "y", {number -> "wrong"}
+        converter.registerInputter "x", { number -> -1 }
+        converter.registerOutputter "y", { number -> Integer.toString(number) }
+        converter.registerOutputter "y", { number -> "wrong" }
 
         then:
         thrown IllegalArgumentException
 
         and:
-        converter.convert ("x","y","test") == "-1"
+        converter.convert("x", "y", "test") == "-1"
 
     }
 
@@ -55,17 +55,17 @@ class ConverterSpec extends Specification{
         def converter = new Converter()
 
         when:
-        converter.registerInputter "x", { number -> -1}
-        converter.registerOutputter "y", {number -> Integer.toString(number)}
+        converter.registerInputter "x", { number -> -1 }
+        converter.registerOutputter "y", { number -> Integer.toString(number) }
 
         and:
-        converter.convert ("a","y","test")
+        converter.convert("a", "y", "test")
 
         then:
         thrown IllegalArgumentException
 
         when:
-        converter.convert ("x","a","test")
+        converter.convert("x", "a", "test")
 
         then:
         thrown IllegalArgumentException

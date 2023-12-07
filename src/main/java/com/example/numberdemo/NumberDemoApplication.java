@@ -16,38 +16,38 @@ import java.util.Map;
 @EnableConfigurationProperties(NumberDemoConfiguration.class)
 public class NumberDemoApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(NumberDemoApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(NumberDemoApplication.class, args);
+    }
 
 
-	@Bean
-	public ConversionController conversionController(Converter converter) {
-		return new ConversionController(converter);
-	}
+    @Bean
+    public ConversionController conversionController(Converter converter) {
+        return new ConversionController(converter);
+    }
 
-	@Bean
-	public Converter converter(NumberDemoConfiguration configuration) {
-		Converter converter = new Converter();
-		for (Map.Entry<String,String> e :configuration.getInputters().entrySet()) {
-			converter.registerInputter(e.getKey(), (Inputter) instantiate(e.getValue()));
-		}
-		for (Map.Entry<String,String> e :configuration.getOutputters().entrySet()) {
-			converter.registerOutputter(e.getKey(), (Outputter) instantiate(e.getValue()));
-		}
-		return converter;
-	}
+    @Bean
+    public Converter converter(NumberDemoConfiguration configuration) {
+        Converter converter = new Converter();
+        for (Map.Entry<String, String> e : configuration.getInputters().entrySet()) {
+            converter.registerInputter(e.getKey(), (Inputter) instantiate(e.getValue()));
+        }
+        for (Map.Entry<String, String> e : configuration.getOutputters().entrySet()) {
+            converter.registerOutputter(e.getKey(), (Outputter) instantiate(e.getValue()));
+        }
+        return converter;
+    }
 
 
-	private Object instantiate(String clazzName) {
-		try {
-			return Class.forName(clazzName).getDeclaredConstructor().newInstance();
-		} catch (ClassNotFoundException | InvocationTargetException | NoSuchMethodException | InstantiationException |
+    private Object instantiate(String clazzName) {
+        try {
+            return Class.forName(clazzName).getDeclaredConstructor().newInstance();
+        } catch (ClassNotFoundException | InvocationTargetException | NoSuchMethodException | InstantiationException |
                  IllegalAccessException e) {
-			//for this heavy configuration error we accept a double log entry
-			log.error("Unable to instantiate {}",clazzName,e);
-			throw new RuntimeException(e);
-		}
+            //for this heavy configuration error we accept a double log entry
+            log.error("Unable to instantiate {}", clazzName, e);
+            throw new RuntimeException(e);
+        }
     }
 
 }

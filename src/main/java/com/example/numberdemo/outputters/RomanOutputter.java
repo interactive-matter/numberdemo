@@ -1,11 +1,9 @@
 package com.example.numberdemo.outputters;
 
-import java.util.Map;
-import java.util.SortedMap;
 import java.util.TreeMap;
 
-//this was quite a nice implementation chat GPT came up with - like it
-public class RomanOutputter implements Outputter{
+//this was quite a nice implementation chatGPT came up with - like it
+public class RomanOutputter implements Outputter {
     private static final TreeMap<Integer, String> ROMAN_MAP = new TreeMap<>(
             (a, b) -> b - a) {{
         put(1000, "M");
@@ -22,6 +20,7 @@ public class RomanOutputter implements Outputter{
         put(4, "IV");
         put(1, "I");
     }};
+
     @Override
     public String apply(Integer number) {
 

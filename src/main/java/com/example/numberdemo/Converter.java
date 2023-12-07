@@ -24,7 +24,7 @@ public class Converter {
     public void registerOutputter(String name, Outputter outputter) {
         Outputter current = outputters.putIfAbsent(name, outputter);
         if (current != null) {
-            throw new IllegalArgumentException("There is already an inputter named " + name + ":" + current);
+            throw new IllegalArgumentException("There is already an outputter named " + name + ":" + current);
         }
     }
 
