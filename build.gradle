@@ -22,6 +22,10 @@ repositories {
     mavenCentral()
 }
 
+wrapper {
+    gradleVersion = '7.4.2'
+}
+
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     compileOnly 'org.projectlombok:lombok'
